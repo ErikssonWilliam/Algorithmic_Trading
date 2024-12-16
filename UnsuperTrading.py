@@ -6,6 +6,7 @@ import pandas as pd
 import numpy as np
 import datetime as dt
 import yfinance as yf
+#import pandas_ta as ta
 import warnings
 
 # pip install statsmodels pandas-datareader matplotlib pandas numpy datetime yfinance pandas_ta
@@ -48,6 +49,10 @@ df.columns = df.columns.str.lower() #Covert all column names to lower case
     #Open: Opening price of asset
 df['garman_klass_vol'] = ((np.log(df['high'])-np.log(df['low']))**2)/2 - ((2*np.log(2)-1)*(np.log(df['adj close'])-np.log(df['open']))**2)
 print(df)
+
+#Relative Strength Index (RSI), used to measure speed and change of price movements of a stock from 0 to 100
+
+#df['rsi'] = df.groupby(level=1)['adj close'].transform(lambda x: ta.rsi(close=x, length=20))
 
 
 
